@@ -1,4 +1,5 @@
-package br.com.alura.spring.data.repository;
+package br.com.alura.spring.data.repositories;
+
 
 import br.com.alura.spring.data.orm.Cargo;
 import org.springframework.data.repository.CrudRepository;

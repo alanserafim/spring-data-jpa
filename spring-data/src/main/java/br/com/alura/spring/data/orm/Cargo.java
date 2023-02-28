@@ -1,6 +1,6 @@
 package br.com.alura.spring.data.orm;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "cargos")
