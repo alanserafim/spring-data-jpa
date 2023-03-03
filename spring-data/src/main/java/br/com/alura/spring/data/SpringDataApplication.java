@@ -1,6 +1,9 @@
 package br.com.alura.spring.data;
 
 import br.com.alura.spring.data.services.CargoService;
+import br.com.alura.spring.data.services.FuncionarioService;
+import br.com.alura.spring.data.services.RelatorioService;
+import br.com.alura.spring.data.services.UnidadeTrabalhoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +16,13 @@ public class SpringDataApplication implements CommandLineRunner {
 
 	@Autowired
 	private CargoService cargoService;
+	@Autowired
+	private RelatorioService relatoriosService;
+	@Autowired
+	private FuncionarioService funcionarioService;
+	@Autowired
+	private UnidadeTrabalhoService unidadeTrabalhoService;
+
 	private Boolean system = true;
 
 	public static void main(String[] args) {
@@ -24,17 +34,31 @@ public class SpringDataApplication implements CommandLineRunner {
 		Scanner scanner = new Scanner(System.in);
 
 		while(system){
-			System.out.println("Qual acao voce quer executar: ");
-			System.out.println("0 - Sair");
-			System.out.println("1 - Cargo");
+			System.out.println("1 - Funcionario");
+			System.out.println("2 - Cargo");
+			System.out.println("3 - Unidade");
+			System.out.println("4 - Relatorios");
 
-			int action = scanner.nextInt();
-			if (action == 1){
-				cargoService.inicial(scanner);
-			} else {
-				system = false;
+			Integer function = scanner.nextInt();
+
+			switch (function) {
+				case 1:
+					funcionarioService.inicial(scanner);
+					break;
+				case 2:
+					cargoService.inicial(scanner);
+					break;
+				case 3:
+					unidadeTrabalhoService.inicial(scanner);
+					break;
+				case 4:
+					relatoriosService.inicial(scanner);
+					break;
+				default:
+					System.out.println("Finalizando");
+					system = false;
+					break;
 			}
-
 		}
 
 	}
