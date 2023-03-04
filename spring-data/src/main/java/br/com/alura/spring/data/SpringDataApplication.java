@@ -16,12 +16,16 @@ public class SpringDataApplication implements CommandLineRunner {
 
 	@Autowired
 	private CargoService cargoService;
+
 	@Autowired
-	private RelatorioService relatoriosService;
+	private RelatorioService relatorioService;
+
 	@Autowired
 	private FuncionarioService funcionarioService;
+
 	@Autowired
 	private UnidadeTrabalhoService unidadeTrabalhoService;
+
 
 	private Boolean system = true;
 
@@ -52,7 +56,7 @@ public class SpringDataApplication implements CommandLineRunner {
 					unidadeTrabalhoService.inicial(scanner);
 					break;
 				case 4:
-					relatoriosService.inicial(scanner);
+					relatorioService.inicial(scanner);
 					break;
 				default:
 					System.out.println("Finalizando");

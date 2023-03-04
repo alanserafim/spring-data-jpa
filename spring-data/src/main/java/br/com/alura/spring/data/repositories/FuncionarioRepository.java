@@ -10,11 +10,15 @@ import java.util.List;
 
 @Repository
 public interface FuncionarioRepository extends CrudRepository <Funcionario, Integer> {
+    //Derivated Query
     List<Funcionario> findByNome(String nome);
 
-    @Query("SELECT f FROM Funcionario f " +
-            "WHERE f.nome = :nome " +
-            "AND f.salario >= :salario " +
-            "AND f.dataContratacao = :data")
-    List<Funcionario> findNomeSalarioMaiorDataContratacao(String nome, Double Salario, LocalDate data);
+    //JPQL
+    @Query("SELECT f FROM Funcionario f WHERE f.nome = :nome "
+            + "AND f.salario >= :salario AND f.dataContratacao = :data")
+    List<Funcionario> findNomeSalarioMaiorDataContratacao(String nome, Double salario, LocalDate data);
+
+    //Native Query
+    @Query(value = "SELECT * FROM funcionarios f WHERE f.data_contratacao >= :data", nativeQuery = true)
+    List<Funcionario> findDataContratacaoMaior(LocalDate data);
 }
